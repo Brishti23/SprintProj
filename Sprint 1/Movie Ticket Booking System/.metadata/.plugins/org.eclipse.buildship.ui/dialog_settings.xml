@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.buildship.ui.wizard.project.creation">
+		<item value="true" key="use_default_location"/>
+		<item value="C:\Program Files\Java\jdk1.8.0_281" key="java_home"/>
+		<item value="GRADLE_DISTRIBUTION(LOCAL_INSTALLATION(C:\Users\BRISHTI\Downloads\gradle-6.8.3))" key="gradle_distribution"/>
+		<item value="C:\Users\BRISHTI\Desktop\Movie Ticket Booking System\com.bookmymovie" key="project_location"/>
+	</section>
+</section>

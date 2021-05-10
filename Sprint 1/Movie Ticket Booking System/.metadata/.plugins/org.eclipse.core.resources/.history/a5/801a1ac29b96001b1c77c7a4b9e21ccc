@@ -1,0 +1,22 @@
+package com.bookmymovie.service;
+
+import java.util.List;
+
+import com.bookmymovie.model.Administrator;
+import com.bookmymovie.model.Movie;
+
+public interface AdministratorService {
+	
+	Movie save(Movie movie);
+	List<Movie> getMovieList();
+	String updateMovie(Movie movie);
+	String removeMovie(Movie movie);
+	
+	public Administrator addAdmin(Administrator admin); 
+	//public Administrator updateAdmin(Administrator admin);
+	
+	//public Administrator removeAdmin(Administrator admin);
+	//public Administrator removeAdmin(int adminId);
+	//public Administrator getAdminById(int adminId);
+
+}

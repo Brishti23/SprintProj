@@ -1,0 +1,9 @@
+package com.bookmymovie.utils;
+
+@SuppressWarnings("serial")
+public class MovieNotFoundException extends RuntimeException {
+	public MovieNotFoundException(int movieId){
+		System.out.println("This movie is not available");
+	}
+
+}

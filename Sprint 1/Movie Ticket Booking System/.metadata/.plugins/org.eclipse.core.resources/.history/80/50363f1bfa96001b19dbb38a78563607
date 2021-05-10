@@ -1,0 +1,188 @@
+package com.bookmymovie;
+
+
+import org.junit.jupiter.api.BeforeEach;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.VerificationCollector;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.bookmymovie.dao.MovieDao;
+import com.bookmymovie.dao.TheatreDao;
+import com.bookmymovie.model.Movie;
+import com.bookmymovie.model.Theatre;
+import com.bookmymovie.service.AdministratorService;
+import com.bookmymovie.service.AdministratorServiceImpl;
+
+@SuppressWarnings("unused")
+@RunWith(MockitoJUnitRunner.class)
+@SpringBootTest
+public class AdminControllerTest {
+	
+	
+	@InjectMocks
+	AdministratorServiceImpl service1;
+	
+	@Mock
+	TheatreDao dao1;
+	
+	@SuppressWarnings("deprecation")
+	@BeforeEach
+	public void init() {
+		System.out.println("** before method ***");
+		MockitoAnnotations.initMocks(this); 
+	}
+	
+	/*@Test
+	public void testGetAllTheatres(){
+	List<Theatre> theatreList = new ArrayList<Theatre>();
+	theatreList.add(new Theatre(12,"acropolis","kolkata"));
+	
+	Mockito.when(dao1.findAll()).thenReturn(theatreList);
+	List<Theatre> list = service1.getTheatreList();
+	assertEquals(1,list.size());
+	Mockito.verify(dao1,Mockito.times(1)).findAll();
+	}
+	*/
+	
+	@Test
+	public void deleteTheatre(){
+		Theatre theatre = new Theatre(11,"grand galada","chennai");
+		dao1.deleteById(11);
+	    Mockito.verify(dao1,Mockito.times(1)).deleteById(11);
+	}
+	
+	@Test
+	public void testaddTheatre() {
+		Theatre theatre=new Theatre(18,"pvr","hyderabad");
+		theatre.setTheatreid(18);
+		theatre.setTheatrename("qwe");
+		theatre.setTheatrename("malkajgiri");
+		dao1.save(theatre);
+	}
+	@Test
+	public void updateTheatre() {
+		Theatre theatre = new Theatre(35,"mvrmall","bangalore");
+		dao1.findById(35);
+		dao1.save(theatre);
+	   Mockito.verify(dao1, Mockito.times(1)).save(theatre);
+	}
+
+	
+	/*
+	@Test
+	public void testaddMovie() {
+		Movies movie=new Movies(12,"balaji","malkajgiri");
+		movie.setMovieId(12);
+		movie.setTheatres("balaji");
+		movie.setMovie("malkajgiri");
+		movieDao.save(movie);
+	}
+	@Test
+	public void updateMovies() {
+		Movies movie = new Movies(65,"grfdestr","mvrmall");
+		movieDao.findById(65);
+		movieDao.save(movie);
+	   verify(movieDao, Mockito.times(1)).save(movie);
+	}
+	@Test
+	public void deleteMovies(){
+	Movies movies = new Movies(3,"Rajivgandi","hyderabad");
+	movieDao.deleteById(3);
+	verify(movieDao, times(1)).deleteById(3);
+	}	
+	@Mock
+private TheatreDao theatreDao;
+@InjectMocks
+private AdminService adminService2;
+@Before
+public void setup2(){
+	MockitoAnnotations.initMocks(this);
+}
+@Test
+public void testGetTheatreList(){
+	List<Theatre> TheatreList = new ArrayList<Theatre>();
+	TheatreList.add(new Theatre(11,"srinivasa","siddipet"));
+	TheatreList.add(new Theatre(24,"asian","pune"));
+	when(theatreDao.findAll()).thenReturn(TheatreList);
+	List<Theatre> result = theatreDao.getTheatreList();
+	assertEquals(2, TheatreList.size());
+}
+@Test
+public void updateTheatre() {
+	Theatre theatre = new Theatre(35,"grfdestr","mvrmall");
+	theatreDao.findById(35);
+	theatreDao.save(theatre);
+   verify(theatreDao, Mockito.times(1)).save(theatre);
+}
+
+@Test
+public void deleteTheatre(){
+	Theatre theatre = new Theatre(11,"hyderabad","ranam");
+	theatreDao.deleteById(11);
+    verify(theatreDao, times(1)).deleteById(11);
+}
+@Test
+public void testaddTheatre() {
+	Theatre theatre=new Theatre(18,"qwe","malkajgiri");
+	theatre.setTheatreId(18);
+	theatre.setTheatreName("qwe");
+	theatre.setCityName("malkajgiri");
+	theatreDao.save(theatre);
+}
+@Mock
+private ShowsDao showsDao;
+@InjectMocks
+private AdminService adminService3;
+@Before
+public void setup3(){
+	MockitoAnnotations.initMocks(this);
+}
+@Test
+public void testGetShowsList(){
+	List<Shows> showList = new ArrayList<Shows>();
+	showList.add(new Shows(24,"asian","matniee"));
+	when(showsDao.findAll()).thenReturn(showList);
+	List<Shows> result = showsDao.getShowList();
+	assertEquals(1, showList.size());
+}
+@Test
+public void deleteShows(){
+Shows shows = new Shows(2,"Rajivgandi","hyderabad");
+showsDao.deleteById(2);
+verify(showsDao, times(1)).deleteById(2);
+}
+@Test
+public void updateShows() {
+	Shows shows = new Shows(25,"grfdestr","mvrmall");
+	showsDao.findById(25);
+	showsDao.save(shows); 
+   verify(showsDao, Mockito.times(1)).save(shows);
+}
+@Test
+public void testaddShows() {
+	Shows shows=new Shows(12,"", "malkajgiri");
+	shows.setSno(12);
+	shows.setTimings("3:40am");
+	shows.setShow("morning");
+	showsDao.save(shows);
+}
+*/
+}

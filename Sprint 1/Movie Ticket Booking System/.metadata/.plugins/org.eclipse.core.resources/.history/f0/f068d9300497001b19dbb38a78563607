@@ -1,0 +1,81 @@
+package com.bookmymovie;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyString;
+
+import java.util.ArrayList; 
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.bookmymovie.dao.TheatreDao;
+import com.bookmymovie.model.Theatre;
+
+
+
+@RunWith(MockitoJUnitRunner.class)
+public class CustomerControllerTest {
+	
+
+
+		@Mock
+	    private TheatreDao theatreDao;
+		
+		@Mock
+	    private MoviesDao moviesDao;
+		
+		@Mock
+	    private PaymentDao paymentDao;
+
+		@Mock
+	    private CustomerDao customerDao;
+		
+		@SuppressWarnings("deprecation")
+		@Before
+		public void setup(){
+			MockitoAnnotations.initMocks(this);
+		}
+		
+		@Test
+		public void testTheatreNames(){
+			List<Theatre> TheatreNames = new ArrayList<Theatre>();
+			TheatreNames.add(new Theatre(11,"srinivasa","pune"));
+			TheatreNames.add(new Theatre(24,"asian","pune"));
+			when(theatreDao.theatreNames(anyString())).thenReturn(TheatreNames);
+			List<Theatre> result = theatreDao.theatreNames("pune");
+			assertEquals(2, result.size());
+		}
+		
+		@Test
+		public void testGetMovieNames(){
+			List<Movies> Movie = new ArrayList<Movies>();
+			Movie.add(new Movies(11,"mvrmall","pune"));
+			Movie.add(new Movies(21,"balaji","pune"));
+			when(moviesDao.movieNames(anyString())).thenReturn(Movie);
+			List<Movies> result = moviesDao.movieNames("pune");
+			assertEquals(2, result.size());
+		}
+		
+		@Test
+		public void testaddPayments() {
+			Payments payments=new Payments(12,34,112,65, "malkajgiri",78,"src");
+			paymentDao.save(payments);
+			verify(paymentDao, Mockito.times(1)).save(payments);
+		}
+		
+		@Test
+		public void testaddCustomer() {
+			Customer customer=new Customer("abc","abc@abc.in","abc123","123");
+			customerDao.save(customer);
+			verify(customerDao, Mockito.times(1)).save(customer);
+		}
+	}
+}

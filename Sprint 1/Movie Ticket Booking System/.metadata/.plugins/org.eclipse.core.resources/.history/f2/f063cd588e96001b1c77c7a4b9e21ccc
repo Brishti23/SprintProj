@@ -1,0 +1,13 @@
+package com.bookmymovie.service;
+
+import com.bookmymovie.model.Administrator;
+
+public interface AdministratorService {
+	
+	public Administrator addAdmin(Administrator admin); 
+	public Administrator updateAdmin(Administrator admin);
+	public Administrator removeAdmin(Administrator admin);
+	public Administrator removeAdmin(int adminId);
+	public Administrator getAdminById(int adminId);
+
+}

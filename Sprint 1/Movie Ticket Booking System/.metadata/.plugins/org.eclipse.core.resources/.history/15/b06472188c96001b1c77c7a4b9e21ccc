@@ -1,0 +1,6 @@
+package com.bookmymovie.utils;
+
+
+public interface AdministratorException {
+
+}

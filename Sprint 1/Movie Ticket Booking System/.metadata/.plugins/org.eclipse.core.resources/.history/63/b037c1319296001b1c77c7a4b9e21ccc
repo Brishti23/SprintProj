@@ -1,0 +1,5 @@
+package com.bookmymovie.utils;
+
+public class MovieNotFoundException {
+
+}

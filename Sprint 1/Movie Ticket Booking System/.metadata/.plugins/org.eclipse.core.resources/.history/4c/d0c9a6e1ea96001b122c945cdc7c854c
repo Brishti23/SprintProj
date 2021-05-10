@@ -1,0 +1,54 @@
+package com.bookmymovie;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class AdministratorControllerTest {
+
+	@Test
+	public void testAddAdmin() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testAddMovie() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMovieList() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testUpdateMovie() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRemoveMovie() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testAddTheatre() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testTheatreList() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testUpdateTheatre() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRemoveTheatre() {
+		fail("Not yet implemented");
+	}
+
+}

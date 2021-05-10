@@ -1,0 +1,86 @@
+package com.bookmymovie.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bookmymovie.dao.AdministratorDao;
+import com.bookmymovie.dao.MovieDao;
+import com.bookmymovie.model.Administrator;
+import com.bookmymovie.model.Movie;
+import com.bookmymovie.utils.IDNotFoundException;
+
+@Service
+@Transactional
+public class AdministratorServiceImpl implements AdministratorService {
+	
+	@Autowired
+	private AdministratorDao adao;
+	
+	@Autowired
+	private MovieDao mdao;
+
+	@Override
+	public Administrator addAdmin(Administrator admin) {
+		return adao.save(admin);
+	}
+
+	@Override
+	public Movie save(Movie movie) {
+		return mdao.save(movie);
+	}
+
+	@Override
+	public List<Movie> getMovieList() {
+		return mdao.getMovieList();
+	}
+
+	@Override
+	public String updateMovie(Movie movie) {
+		if(mdao.existsById(movie.getMovieId())){
+			mdao.save(movie);
+			return "Movies were successfully updated";
+		}
+		else {
+			return "Movies were not updated";
+		}
+	}
+
+	@Override
+	public void removeMovie(int movieId) {
+		if(!mdao.existsById(movieId)){
+			throw new IDNotFoundException();
+		}
+		mdao.deleteById(movieId);
+	}
+
+	/*@Override
+	public Administrator updateAdmin(Administrator admin) {
+		return adao.save(admin);
+	}
+	*/
+
+	/*@Override
+	public Administrator removeAdmin(Administrator admin) {
+		adao.delete(admin);
+		return admin;
+	}
+
+	@Override
+	public Administrator removeAdmin(int adminId) {
+		Administrator admin = adao.findById(adminId).get();
+		adao.deleteById(adminId);
+		return admin;
+	}
+
+	@Override
+	public Administrator getAdminById(int adminId) {
+		Administrator admin = adao.findById(adminId).get();
+		return admin;
+	}
+	*/
+
+}
